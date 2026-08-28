@@ -25,7 +25,6 @@ The Multi-Agent AI Research System is an intelligent orchestration application t
 **Supporting Libraries**
 *   `asyncio` (for concurrent API calls)
 *   `python-dotenv` (for environment variables)
-*   `re` (Python Regex for deterministic citation checking)
 
 
 ### 🏗️ System Architecture
