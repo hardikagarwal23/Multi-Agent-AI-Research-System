@@ -107,11 +107,13 @@ async def reviewer_node(state: ResearchState):
     evaluator = get_llm().with_structured_output(ReviewResult)
     result = evaluator.invoke(prompt)
     
+    is_approved = result.is_approved and result.quality_score >= 7
+    
     return {
         "review_score": result.quality_score,
         "review_feedback": result.feedback,
         "review_suggestions": result.followup_queries,
-        "is_approved": result.is_approved,
+        "is_approved": is_approved,
     }
 
 
