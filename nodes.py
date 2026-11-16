@@ -6,8 +6,6 @@ from state import ResearchState
 from schema import ReviewResult
 from llm import get_llm
 
-tavily = AsyncTavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
-
 
 async def planner_node(state: ResearchState):
 
@@ -29,11 +27,21 @@ async def planner_node(state: ResearchState):
 
 async def search_node(state: ResearchState):
     """Executes the search queries concurrently."""
-    async def fetch_results(query):
-        result = await tavily.search(query=query, search_depth="advanced", max_results=3)
-        return result.get("results", [])
+    async with AsyncTavilyClient(
+        api_key=os.getenv("TAVILY_API_KEY")
+    ) as tavily:
 
-    results = await asyncio.gather(*(fetch_results(q) for q in state["search_queries"]))
+        async def fetch_results(query):
+            result = await tavily.search(
+                query=query,
+                search_depth="advanced",
+                max_results=3
+            )
+            return result.get("results", [])
+
+        results = await asyncio.gather(
+            *(fetch_results(q) for q in state["search_queries"])
+        )
     
     sources = []
     seen_urls = set()
