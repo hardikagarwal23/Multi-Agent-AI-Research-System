@@ -8,11 +8,12 @@ The Multi-Agent AI Research System is an intelligent orchestration application t
 
 ### 🌟 Features
 
-*   **Multi-Agent Architecture:** Specialized nodes working in tandem (Planner, Search, Writer, Reviewer, Publisher).
-*   **Human-In-The-Loop (HITL) Triage:** A built-in UI checkpoint allowing humans to audit and filter scraped web sources before the AI begins drafting.
-*   **Bounded Self-Correction Loop:** An automated "Reviewer" agent grades the drafted report and forces rewrites if facts are missing or citations are hallucinated.
-*   **Asynchronous Web Scraping:** Fetches data from multiple web queries simultaneously for high-speed research.
-*   **Structured Validation:** Uses Pydantic to force deterministic, strict JSON outputs from the LLM for reliable routing.
+*   **Multi-Agent Architecture:** Specialized Planner, Search, Writer, Reviewer, and Publisher nodes orchestrated using LangGraph.
+*   **Human-in-the-Loop (HITL) Review:** Pauses the workflow at a checkpoint, allowing users to review and approve retrieved web sources before report generation.
+*   **Bounded Self-Correction Loop:** A Reviewer agent evaluates the generated draft for factual support and citation accuracy, routing rejected drafts back to the Writer for revision, with a maximum of three attempts.
+*   **Asynchronous Web Search:** Executes multiple Tavily search queries concurrently using Python's asyncio for efficient information retrieval.
+*   **Structured Output Validation:** Uses Pydantic schemas with LLM structured outputs to validate reviewer responses and support reliable workflow decisions.
+
 
 ### 🛠️ Tech Stack
 
@@ -72,7 +73,7 @@ Before running the project, make sure you have:
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/multi-agent-research-system.git
+git clone https://github.com/hardikagarwal23/multi-agent-research-system.git
 cd multi-agent-research-system
 ```
 
