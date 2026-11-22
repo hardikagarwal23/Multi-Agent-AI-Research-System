@@ -2,7 +2,8 @@
 
 Demo: https://multi-agent-ai-research-report-generator.streamlit.app
 
-Video: https://github.com/user-attachments/assets/0ec8507e-7475-4f96-8031-803ed63bacbee
+## Demo Video: 
+https://github.com/user-attachments/assets/0ec8507e-7475-4f96-8031-803ed63bacbe
 
 The Multi-Agent AI Research System is an intelligent orchestration application that combines multiple specialized AI agents to conduct automated web research, synthesize data, and generate factually grounded reports. Built with LangGraph, it features a Human-In-The-Loop (HITL) verification gate and an automated self-correction loop to prevent LLM hallucinations.
 
